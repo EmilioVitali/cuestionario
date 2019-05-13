@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <title>Test de Felder</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="js.js"></script>
+  </head>
+  <body>
+
+<div id="app">
+  <input type="hidden" id="dispararAJAX" @click="llenarPreguntas()">
+
+  <footer class="jumbotron text-center">
+  	
+    <div class="progress">
+      <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar"
+      aria-valuenow="40" aria-valuemin="0" aria-valuemax="10" v-bind:style="{width:(progreso*2.32) + '%'}">
+        {{progreso}}
+      </div>
+    </div>
+    
+    </footer>	
+
+
+    <conteiner v-for="pregunta in preguntas" >
+        <div class="jumbotron text-center d-none" :class="{'d-block': pregunta.activo}">
+          <div class="row"></div>
+        
+    <fieldset>
+          <h4>{{pregunta.pregunta}}</h4>
+          <label>
+              <input type="radio" name="numero" value="1"> {{pregunta.respuesta[1]}}
+          </label>
+          <label>
+              <input type="radio" name="numero" value="2"> {{pregunta.respuesta[2]}}
+          </label>
+        <br>
+          <input class="btn btn-primary" type="button" value="Siguiente" @click="guardarDatos(pregunta.id)" v-bind:disabled="deshabilitado">
+      </fieldset>
+        </div>
+      </conteiner>
+      </div>
+  </div>
+</div>
+
+  </body>
+</html>
